@@ -1,31 +1,35 @@
-/**
- * Rounds a number to a specified precision.
-*
-* @param value - The number to round.
-* @param precision - The number of decimal places to round to. Defaults to 0.
-* @returns The rounded number.
-*
-* @example
-* ```typescript
-* round(3.14159, 2); // Returns 3.14
-* round(10.5678);    // Returns 11
-* ```
-*/
+export {}; // Ensure this file is a module
 
-export const sqrt = (n: number): number => {
-  return Math.sqrt(n);
-};
-
-export function round(value: number, precision = 0): number {
-  const multiplier = Math.pow(10, precision);
-  return Math.round((value + Number.EPSILON) * multiplier) / multiplier;
+declare global {
+  interface Number {
+    isEven(): boolean;
+    isOdd(): boolean;
+    sqrt(): number;
+    round(precision?: number): number;
+  }
 }
 
-
-export function isEven(n: number): boolean {
-  return (n & 1) === 0;
+if (!Number.prototype.isEven) {
+  Number.prototype.isEven = function (): boolean {
+    return (this.valueOf() & 1) === 0;
+  };
 }
 
-export function isOdd(n: number): boolean {
-  return (n & 1) === 1;
+if (!Number.prototype.isOdd) {
+  Number.prototype.isOdd = function (): boolean {
+    return (this.valueOf() & 1) === 1;
+  };
+}
+
+if (!Number.prototype.sqrt) {
+  Number.prototype.sqrt = function (): number {
+    return Math.sqrt(this.valueOf());
+  };
+}
+
+if (!Number.prototype.round) {
+  Number.prototype.round = function (precision = 0): number {
+    const multiplier = Math.pow(10, precision);
+    return Math.round((this.valueOf() + Number.EPSILON) * multiplier) / multiplier;
+  };
 }
