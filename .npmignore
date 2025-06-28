@@ -1,0 +1,5 @@
+src/
+*.ts
+*.test.*
+*.spec.*
+tsconfig.json
