@@ -31,38 +31,32 @@ import 'utilynx';
 
 ### Math Utilities (`math.ts`)
 
-#### `sqrt(n: number): number`
-Returns the square root of `n`.
+These functions are **imported directly** from the package and are **not** attached to the `Number` prototype.  
+You should import and use them as regular functions:
 
 ```typescript
-import { sqrt } from 'utilynx';
+import { sqrt, round, isEven, isOdd } from 'utilynx';
+
 sqrt(9); // 3
+
+round(3.14159, 2); // 3.14
+round(10.5678);    // 11
+
+isEven(4); // true
+isOdd(5);  // true
 ```
+
+#### `sqrt(n: number): number`
+Returns the square root of `n`.
 
 #### `round(value: number, precision?: number): number`
 Rounds a number to a specified number of decimal places.
 
-```typescript
-import { round } from 'utilynx';
-round(3.14159, 2); // 3.14
-round(10.5678);    // 11
-```
-
 #### `isEven(n: number): boolean`
 Checks if a number is even.
 
-```typescript
-import { isEven } from 'utilynx';
-isEven(4); // true
-```
-
 #### `isOdd(n: number): boolean`
 Checks if a number is odd.
-
-```typescript
-import { isOdd } from 'utilynx';
-isOdd(5); // true
-```
 
 ---
 

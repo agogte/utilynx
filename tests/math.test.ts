@@ -1,38 +1,38 @@
-import { sqrt, round, isEven, isOdd } from '../src/math';
+import '../src/math'
 
-describe('sqrt', () => {
+describe('Number.prototype.sqrt', () => {
   it('returns correct square root', () => {
-    expect(sqrt(9)).toBe(3);
-    expect(sqrt(0)).toBe(0);
+    expect((9).sqrt()).toBe(3);
+    expect((0).sqrt()).toBe(0);
   });
 });
 
-describe('round', () => {
+describe('Number.prototype.round', () => {
   it('rounds to nearest integer by default', () => {
-    expect(round(2.5)).toBe(3);
-    expect(round(-2.5)).toBe(-2);
+    expect((2.5).round()).toBe(3);
+    expect((-2.5).round()).toBe(-2);
   });
   it('rounds to given precision', () => {
-    expect(round(2.3456, 2)).toBe(2.35);
-    expect(round(2.344, 2)).toBe(2.34);
+    expect((2.3456).round(2)).toBe(2.35);
+    expect((2.344).round(2)).toBe(2.34);
   });
 });
 
-describe('isEven', () => {
+describe('Number.prototype.isEven', () => {
   it('returns true for even numbers', () => {
-    expect(isEven(2)).toBe(true);
-    expect(isEven(0)).toBe(true);
+    expect((2).isEven()).toBe(true);
+    expect((0).isEven()).toBe(true);
   });
   it('returns false for odd numbers', () => {
-    expect(isEven(3)).toBe(false);
+    expect((3).isEven()).toBe(false);
   });
 });
 
-describe('isOdd', () => {
+describe('Number.prototype.isOdd', () => {
   it('returns true for odd numbers', () => {
-    expect(isOdd(3)).toBe(true);
+    expect((3).isOdd()).toBe(true);
   });
   it('returns false for even numbers', () => {
-    expect(isOdd(4)).toBe(false);
+    expect((4).isOdd()).toBe(false);
   });
 });
