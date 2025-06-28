@@ -1,5 +1,5 @@
 src/
+test/
 *.ts
-*.test.*
-*.spec.*
 tsconfig.json
+jest.config.js
