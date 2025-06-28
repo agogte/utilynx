@@ -1,21 +1,32 @@
 {
-  "name": "utilynq",
+  "name": "utilynx",
   "version": "1.0.0",
   "description": "High-level utility functions for working with arrays, math, strings, and more — bringing expressive language features to JavaScript and TypeScript.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-  "test": "jest",
-  "test:watch": "jest --watch",
-  "test:coverage": "jest --coverage",
-  "build": "tsc",
-  "start": "node dist/index.js"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "files": [
     "dist"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "typescript",
+    "javascript",
+    "utilities",
+    "math",
+    "string",
+    "array",
+    "linq",
+    "functional"
+  ],
+  "author": "Advait Gogte",
+  "license": "Commercial",
+  "private": true,
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "ts-jest": "^29.4.0",
