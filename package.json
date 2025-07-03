@@ -1,20 +1,23 @@
 {
   "name": "@agogte/utilynx",
-  "version": "1.0.1",
+  "version": "1.0.4",
+  "type": "module",
   "description": "High-level utility functions for working with arrays, math, strings, and more — bringing expressive language features to JavaScript and TypeScript.",
-  "main": "dist/index.js",
+  "main": "dist-obf/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "build": "tsc",
-    "start": "node dist/index.js",
-    "obfuscate": "node scripts/obfuscate.js",
-    "build:prod": "npm run build && npm run obfuscate"
+    "obfuscate": "javascript-obfuscator dist --output dist-obf --config obfuscator-config.json",
+    "build:prod": "npm run build && npm run obfuscate",
+    "start": "node dist-obf/index.js",
+    "prepublishOnly": "npm run build:prod"
   },
   "files": [
-    "dist"
+    "dist-obf",
+    "dist/index.d.ts"
   ],
   "keywords": [
     "typescript",
@@ -33,6 +36,7 @@
     "javascript-obfuscator": "^4.1.1",
     "terser": "^5.43.1",
     "ts-jest": "^29.4.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "jest": "^29.7.0"
   }
 }
