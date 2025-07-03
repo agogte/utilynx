@@ -1,6 +1,6 @@
 {
   "name": "@agogte/utilynx",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "High-level utility functions for working with arrays, math, strings, and more — bringing expressive language features to JavaScript and TypeScript.",
   "main": "dist-obf/index.js",
