@@ -1,3 +1,36 @@
+/**
+ * Extends the global `Date` interface with additional utility methods.
+ *
+ * @method addDays
+ * Adds the specified number of days to the current date instance and returns a new `Date` object.
+ * @param days - The number of days to add (can be negative).
+ * @returns A new `Date` object with the days added.
+ *
+ * @method isWeekend
+ * Determines whether the current date instance falls on a weekend (Saturday or Sunday).
+ * @returns `true` if the date is a weekend, otherwise `false`.
+ *
+ * @method toShortDateString
+ * Returns a string representation of the date in ISO format "YYYY-MM-DD".
+ * @returns A short date string.
+ *
+ * @method diffDays
+ * Calculates the difference in whole days between the current date instance and another date.
+ * @param otherDate - The date to compare with.
+ * @returns The number of days difference as an integer.
+ *
+ * @method addHours
+ * Adds the specified number of hours to the current date instance and returns a new `Date` object.
+ * @param hours - The number of hours to add (can be negative).
+ * @returns A new `Date` object with the hours added.
+ *
+ * @method addMinutes
+ * Adds the specified number of minutes to the current date instance and returns a new `Date` object.
+ * @param minutes - The number of minutes to add (can be negative).
+ * @returns A new `Date` object with the minutes added.
+ */
+
+
 export {};
 
 declare global {
@@ -10,8 +43,6 @@ declare global {
     average(this: number[]): number | undefined;
   }
 }
-
-// Safely add methods to Array.prototype
 
 if (!Array.prototype.firstOrDefault) {
   Array.prototype.firstOrDefault = function<T>(this: T[], predicate?: (item: T) => boolean): T | undefined {
