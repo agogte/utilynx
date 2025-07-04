@@ -1,3 +1,24 @@
+/**
+ * Extends the global `Number` interface with additional utility methods.
+ *
+ * @method isEven
+ * Determines whether the current number is even.
+ * @returns `true` if the number is even, otherwise `false`.
+ *
+ * @method isOdd
+ * Determines whether the current number is odd.
+ * @returns `true` if the number is odd, otherwise `false`.
+ *
+ * @method sqrt
+ * Returns the square root of the current number.
+ * @returns The square root as a number.
+ *
+ * @method round
+ * Rounds the current number to the specified number of decimal places.
+ * @param precision - The number of decimal places to round to (default is 0).
+ * @returns The rounded number.
+ */
+
 export {};
 
 declare global {
