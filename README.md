@@ -138,7 +138,7 @@ npm run build:prod   # Vite bundle + type declarations + obfuscation into dist-o
 GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)):
 
 - **Pull requests** to `master`/`main`: type-check and run tests on Node 22 and 24.
-- **Push / merge** to `master`/`main`: run tests, then publish to npm if the version in `package.json` isn't already published. Bump the version (`npm version patch|minor|major`) to ship a release.
+- **Push / merge** to `master`/`main`: run tests, then stage a release on npm if the version in `package.json` isn't already published. Approve it with 2FA to make it live: `npm stage list`, then `npm stage approve <stage-id>`. Bump the version (`npm version patch|minor|major`) to ship a release.
 
 Publishing uses [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC): **no npm token is stored in GitHub**. One-time setup on npmjs.com → package **Settings** → **Trusted Publisher** → GitHub Actions, with owner `agogte`, repository `utilynx`, workflow `ci.yml`.
 
