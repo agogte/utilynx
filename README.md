@@ -2,7 +2,7 @@
 
 **English** | [Français](README.fr.md)
 
-[![CI](https://github.com/agogte/utilynq/actions/workflows/ci.yml/badge.svg)](https://github.com/agogte/utilynq/actions/workflows/ci.yml)
+[![CI](https://github.com/agogte/utilynx/actions/workflows/ci.yml/badge.svg)](https://github.com/agogte/utilynx/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/@agogte/utilynx?logo=npm&color=CB3837)](https://www.npmjs.com/package/@agogte/utilynx)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/docs/Web/JavaScript)
@@ -140,7 +140,7 @@ GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)):
 - **Pull requests** to `master`/`main`: type-check and run tests on Node 22 and 24.
 - **Push / merge** to `master`/`main`: run tests, then publish to npm if the version in `package.json` isn't already published. Bump the version (`npm version patch|minor|major`) to ship a release.
 
-Publishing uses [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC): **no npm token is stored in GitHub**. One-time setup on npmjs.com → package **Settings** → **Trusted Publisher** → GitHub Actions, with owner `agogte`, repository `utilynq`, workflow `ci.yml`.
+Publishing uses [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC): **no npm token is stored in GitHub**. One-time setup on npmjs.com → package **Settings** → **Trusted Publisher** → GitHub Actions, with owner `agogte`, repository `utilynx`, workflow `ci.yml`.
 
 ---
 

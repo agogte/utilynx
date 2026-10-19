@@ -30,6 +30,11 @@
     "linq",
     "functional"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agogte/utilynx.git"
+  },
+  "homepage": "https://github.com/agogte/utilynx#readme",
   "author": "Advait Gogte",
   "license": "Commercial",
   "devDependencies": {
