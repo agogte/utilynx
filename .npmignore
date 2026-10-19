@@ -1,5 +1,0 @@
-src/
-test/
-*.ts
-tsconfig.json
-jest.config.js
