@@ -1,6 +1,18 @@
-# 🌟 utilynx 
+# 🌟 utilynx
 
-High-level utility functions for working with arrays, math, strings, and more — bringing expressive language features to JavaScript and TypeScript. 
+**English** | [Français](README.fr.md)
+
+[![CI](https://github.com/agogte/utilynq/actions/workflows/ci.yml/badge.svg)](https://github.com/agogte/utilynq/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@agogte/utilynx?logo=npm&color=CB3837)](https://www.npmjs.com/package/@agogte/utilynx)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/docs/Web/JavaScript)
+[![Node.js](https://img.shields.io/badge/Node.js-22%2B-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![Vite](https://img.shields.io/badge/built_with-Vite-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+[![Vitest](https://img.shields.io/badge/tested_with-Vitest-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
+[![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)](https://github.com/features/actions)
+[![License: Commercial](https://img.shields.io/badge/license-Commercial-lightgrey)](LICENSE)
+
+High-level utility functions for working with arrays, math, strings, and more — bringing expressive language features to JavaScript and TypeScript.
 
 This project extends the native JavaScript/TypeScript objects (`Array`, `Date`, `Number`, `Object`, and `String`) with powerful utility methods to simplify common programming patterns. Inspired by LINQ (C#) and modern functional programming, these extensions make your code more expressive, readable, and efficient.
 
@@ -8,16 +20,19 @@ This project extends the native JavaScript/TypeScript objects (`Array`, `Date`, 
 
 ## 📦 Installation
 
-Simply include the module in your TypeScript project:
+```bash
+npm install @agogte/utilynx
+```
+
+Then import it once, at your app's entry point:
 
 ```ts
 import '@agogte/utilynx';
-```
 
-Or if you've bundled it as a package:
-
-```bash
-npm install @agogte/utilynx
+[3, 1, 2].orderBy(x => x).take(2);   // [1, 2]
+'Hello World'.toKebabCase();          // 'hello-world'
+(42).toOrdinal();                     // '42nd'
+new Date().addDays(7).isWeekend();    // true / false
 ```
 
 ---
@@ -28,46 +43,104 @@ npm install @agogte/utilynx
 
 | Method | Description |
 |--------|-------------|
-| `firstOrDefault(predicate?)` | Returns the first element that matches the predicate, or `undefined` if none found. |
-| `groupBy(keySelector)` | Groups elements by the result of `keySelector`, returns a dictionary of arrays. |
-| `sum()` | Returns the sum of numeric values in the array. |
-| `average()` | Returns the average of numeric values in the array. |
+| `firstOrDefault(predicate?)` | First element matching the predicate, or `undefined`. |
+| `lastOrDefault(predicate?)` | Last element matching the predicate, or `undefined`. |
+| `groupBy(keySelector)` | Groups elements into a dictionary of arrays by key. |
+| `countBy(keySelector)` | Counts elements per key. |
+| `distinct(keySelector?)` | Removes duplicates, optionally by key. |
+| `orderBy(keySelector)` | Returns a new array sorted ascending by key. |
+| `orderByDesc(keySelector)` | Returns a new array sorted descending by key. |
+| `chunk(size)` | Splits the array into chunks of `size`. |
+| `take(count)` | First `count` elements. |
+| `skip(count)` | All elements after the first `count`. |
+| `flatten()` | Flattens nested arrays. |
+| `intersect(other)` | Elements present in both arrays. |
+| `except(other)` | Elements not present in `other`. |
+| `zip(other, transform?)` | Pairs elements with `other` (optionally transformed). |
+| `partition(predicate)` | Splits into `[matching, rest]`. |
+| `sum()` | Sum of numeric values. |
+| `average()` | Average of numeric values. |
+| `min()` / `max()` | Smallest / largest numeric value. |
+| `median()` | Median of numeric values. |
 
 ### 🗓️ `Date` Extensions
 
 | Method | Description |
 |--------|-------------|
-| `addDays(days)` | Returns a new `Date` with the specified number of days added. |
-| `addHours(hours)` | Returns a new `Date` with the specified number of hours added. |
-| `addMinutes(minutes)` | Returns a new `Date` with the specified number of minutes added. |
-| `isWeekend()` | Returns `true` if the date falls on a weekend. |
-| `toShortDateString()` | Returns a string in `YYYY-MM-DD` format. |
-| `diffDays(otherDate)` | Returns the number of full days between two dates. |
+| `addMilliseconds(ms)` / `addSeconds(s)` / `addMinutes(m)` / `addHours(h)` | Returns a new `Date` shifted by the given amount. |
+| `addDays(days)` / `addMonths(months)` / `addYears(years)` | Returns a new `Date` shifted by the given amount. |
+| `startOfDay()` / `endOfDay()` | Start / end of the same day. |
+| `startOfMonth()` / `endOfMonth()` | Start / end of the same month. |
+| `isBefore(other)` / `isAfter(other)` | Compares with another date. |
+| `isSameDay(other)` | `true` if both dates fall on the same calendar day. |
+| `isWeekend()` / `isWeekday()` | Day-of-week checks. |
+| `diffDays(other)` / `diffHours(other)` / `diffMinutes(other)` | Difference from another date. |
+| `weekNumber()` | ISO week number. |
+| `toShortDateString()` | `YYYY-MM-DD` string. |
+| `toRelativeString()` | Human-readable relative time, e.g. `"3 days ago"`. |
+| `format(pattern)` | Formats the date using a pattern string. |
 
 ### 🔢 `Number` Extensions
 
 | Method | Description |
 |--------|-------------|
-| `isEven()` | Returns `true` if the number is even. |
-| `isOdd()` | Returns `true` if the number is odd. |
-| `sqrt()` | Returns the square root of the number. |
-| `round(precision?)` | Rounds the number to a specified number of decimal places (default: 0). |
+| `isEven()` / `isOdd()` | Parity checks. |
+| `between(min, max)` | `true` if the number is within the range. |
+| `clamp(min, max)` | Constrains the number to the range. |
+| `round(precision?)` | Rounds to `precision` decimal places (default: 0). |
+| `floor()` / `ceil()` / `abs()` / `sign()` | Shortcuts for the matching `Math` functions. |
+| `sqrt()` / `pow(exponent)` | Square root / power. |
+| `percentage(total)` | This number as a percentage of `total`. |
+| `toOrdinal()` | Ordinal string, e.g. `1st`, `2nd`, `3rd`. |
 
 ### 📦 `Object` Extensions
 
 | Method | Description |
 |--------|-------------|
-| `hasValue()` | Returns `true` if the object is not `null`, `undefined`, or empty. |
-| `isEmpty()` | Returns `true` if the object has no enumerable properties. |
-| `isNumeric()` | Returns `true` if the object represents a numeric value. |
+| `hasValue()` | `true` if not `null`, `undefined`, or empty. |
+| `isEmpty()` | `true` if the object has no enumerable properties. |
+| `isNumeric()` | `true` if the object represents a numeric value. |
+| `deepClone()` | Deep copy of the object. |
+| `deepEqual(other)` | Structural equality check. |
+| `pick(...keys)` / `omit(...keys)` | New object with only / without the given keys. |
+| `mapValues(fn)` | New object with each value transformed. |
+| `toArray()` | Converts to an array of `{ key, value }` pairs. |
+| `path(dotPath)` | Reads a nested value, e.g. `obj.path('a.b.c')`. |
 
 ### 🧵 `String` Extensions
 
 | Method | Description |
 |--------|-------------|
-| `isNullOrEmpty()` | Returns `true` if the string is `null`, `undefined`, or empty. |
-| `padLeft(totalLength, padChar)` | Pads the string on the left to the desired total length. |
-| `padRight(totalLength, padChar)` | Pads the string on the right to the desired total length. |
+| `isNullOrEmpty()` | `true` if the string is `null`, `undefined`, or empty. |
+| `padLeft(totalLength, padChar)` / `padRight(totalLength, padChar)` | Pads to the desired total length. |
+| `capitalize()` | Uppercases the first character. |
+| `toCamelCase()` / `toPascalCase()` / `toSnakeCase()` / `toKebabCase()` | Case conversions. |
+| `toSlug()` | URL-friendly slug. |
+| `truncate(length, suffix?)` | Shortens the string and appends a suffix. |
+| `words()` | Splits into an array of words. |
+| `countOccurrences(sub)` | Number of times `sub` appears. |
+| `reverse()` | Reversed string. |
+| `isPalindrome()` | `true` if the string reads the same backwards. |
+| `isEmail()` / `isUrl()` | Format validation. |
+
+---
+
+## 🛠️ Development
+
+```bash
+npm install
+npm test             # run the Vitest test suite (npm run test:watch for watch mode)
+npm run build:prod   # Vite bundle + type declarations + obfuscation into dist-obf/
+```
+
+### CI/CD
+
+GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)):
+
+- **Pull requests** to `master`/`main`: type-check and run tests on Node 22 and 24.
+- **Push / merge** to `master`/`main`: run tests, then publish to npm if the version in `package.json` isn't already published. Bump the version (`npm version patch|minor|major`) to ship a release.
+
+Publishing uses [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC): **no npm token is stored in GitHub**. One-time setup on npmjs.com → package **Settings** → **Trusted Publisher** → GitHub Actions, with owner `agogte`, repository `utilynq`, workflow `ci.yml`.
 
 ---
 
