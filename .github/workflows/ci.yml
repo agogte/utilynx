@@ -47,7 +47,7 @@ jobs:
           node-version: 24 # ships npm 11, required for trusted publishing
           cache: npm
           registry-url: https://registry.npmjs.org
-      - name: Ensure npm >= 11.5.1 (required for trusted publishing)
+      - name: Ensure latest npm (trusted publishing + npm stage)
         run: npm install -g npm@latest && npm --version
       - run: npm ci
 
@@ -64,7 +64,12 @@ jobs:
             echo "publish=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # prepublishOnly runs build:prod (vite + tsc + obfuscate)
-      - name: Publish
+      - name: Build
         if: steps.version.outputs.publish == 'true'
-        run: npm publish --access public
+        run: npm run build:prod
+
+      # The trusted publisher on npm only allows staging. The release goes live
+      # once approved with 2FA: npm stage list, then npm stage approve <stage-id>.
+      - name: Stage release on npm
+        if: steps.version.outputs.publish == 'true'
+        run: npm stage publish . --access public

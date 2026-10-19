@@ -138,7 +138,7 @@ npm run build:prod   # bundle Vite + déclarations de types + obfuscation dans d
 GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) :
 
 - **Pull requests** vers `master`/`main` : vérification des types et tests sur Node 22 et 24.
-- **Push / merge** sur `master`/`main` : tests, puis publication sur npm si la version de `package.json` n'est pas encore publiée. Incrémentez la version (`npm version patch|minor|major`) pour publier une nouvelle release.
+- **Push / merge** sur `master`/`main` : tests, puis préparation (staging) d'une release sur npm si la version de `package.json` n'est pas encore publiée. Approuvez-la avec la 2FA pour la mettre en ligne : `npm stage list`, puis `npm stage approve <stage-id>`. Incrémentez la version (`npm version patch|minor|major`) pour publier une nouvelle release.
 
 La publication utilise le [Trusted Publishing de npm](https://docs.npmjs.com/trusted-publishers) (OIDC) : **aucun jeton npm n'est stocké sur GitHub**. Configuration unique sur npmjs.com → **Settings** du paquet → **Trusted Publisher** → GitHub Actions, avec le propriétaire `agogte`, le dépôt `utilynx` et le workflow `ci.yml`.
 
